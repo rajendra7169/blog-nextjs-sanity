@@ -56,6 +56,7 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
       draftMode,
       token: draftMode ? readToken : '',
     },
+    revalidate: 30, // Revalidate every 30 seconds
   }
 }
 
@@ -64,6 +65,6 @@ export const getStaticPaths = async () => {
 
   return {
     paths: slugs?.map(({ slug }) => `/posts/${slug}`) || [],
-    fallback: 'blocking',
+    fallback: 'blocking', // Dynamically generate pages if not pre-rendered
   }
 }

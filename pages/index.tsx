@@ -41,5 +41,6 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
       draftMode,
       token: draftMode ? readToken : '',
     },
+    revalidate: 30, // Revalidate every 30 seconds
   }
 }
